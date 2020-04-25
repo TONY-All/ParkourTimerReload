@@ -1,0 +1,7 @@
+name: ParkourTimerReload
+version: @version@
+main: cn.maxmc.parkourtimerreload.ParkourTimerReload
+api-version: 1.13
+authors: [xiyanxinnian, TONY_All]
+description: ParkourTimerReload
+website: https://www.maxmc.cn
