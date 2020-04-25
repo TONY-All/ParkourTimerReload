@@ -40,4 +40,9 @@ public interface ParkourData {
      * @implNote Must have a private noArg Constructor
      */
     ParkourData getNewInstance(String area);
+
+    /**
+     * load Data from Source
+     */
+    void setup();
 }

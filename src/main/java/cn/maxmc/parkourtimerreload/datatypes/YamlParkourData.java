@@ -1,7 +1,6 @@
 package cn.maxmc.parkourtimerreload.datatypes;
 
 import cn.maxmc.parkourtimerreload.ParkourData;
-import cn.maxmc.parkourtimerreload.ParkourManager;
 import cn.maxmc.parkourtimerreload.ParkourTimerReload;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -23,6 +22,9 @@ public class YamlParkourData implements ParkourData {
         ParkourTimerReload.getPm().addDataType("yml",new YamlParkourData());
     }
 
+    /**
+     * @param area Area of Parkour
+     */
     public YamlParkourData(String area) {
         this.area = area;
 
@@ -76,5 +78,18 @@ public class YamlParkourData implements ParkourData {
     @Override
     public ParkourData getNewInstance(String area) {
         return new YamlParkourData(area);
+    }
+
+
+    @Override
+    public void setup() {
+        File f = new File(ParkourTimerReload.getInstance().getDataFolder(),"data");
+        for (File file : f.listFiles()) {
+            if(file.getName().contains("data_")){
+                String area = file.getName().replace("data_","");
+                area = area.replace(".yml","");
+                ParkourTimerReload.getPm().addData(new YamlParkourData(area));
+            }
+        }
     }
 }

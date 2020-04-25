@@ -20,17 +20,27 @@ public final class ParkourTimerReload extends JavaPlugin {
         Instance = instance;
     }
 
+    /**
+     * Plugin start up logic.
+     */
     @Override
     public void onEnable() {
         Bukkit.getLogger().info("正在加载玩家数据");
+        registerTypes();
         pm = new ParkourManager();
     }
 
+    /**
+     * Plugin shut down logic.
+     */
     @Override
     public void onDisable() {
 
     }
 
+    /**
+     * Register existed Types
+     */
     private void registerTypes(){
         YamlParkourData.register();
     }

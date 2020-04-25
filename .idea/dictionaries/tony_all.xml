@@ -2,6 +2,9 @@
   <dictionary name="tony_all">
     <words>
       <w>cmds</w>
+      <w>parkouradmin</w>
+      <w>parkourcancel</w>
+      <w>sdata</w>
     </words>
   </dictionary>
 </component>
