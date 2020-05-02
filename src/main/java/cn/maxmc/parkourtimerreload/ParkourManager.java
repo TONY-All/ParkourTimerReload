@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,13 +15,18 @@ import java.util.Map;
  * 玩家跑酷管理类
  */
 public class ParkourManager {
-    private Map<String,ParkourData> dataTypes = new HashMap<>();
-    private Map<Player,Timer> timer = new HashMap<>();
+    private Map<String,ParkourData> dataTypes;
+    private Map<Player,Timer> timer;
     private List<ParkourData> data;
     private String datatype = ParkourTimerReload.getInstance().getConfig().getString("storge");
 
     public ParkourManager() {
         dataTypes = new HashMap<>();
+        data = new ArrayList<>();
+        timer = new HashMap<>();
+    }
+
+    public void init(){
         //数据存储类型判断
         String datatype = ParkourTimerReload.getInstance().getConfig().getString("storge");
         if(dataTypes.containsKey(datatype)){
@@ -38,7 +44,11 @@ public class ParkourManager {
         timer.get(p).reset();
     }
 
-    public void resetPlayer(OfflinePlayer p){
+    public void resetPlayer(Player p){
+        timer.get(p).reset();
+    }
+
+    public void removePlayer(OfflinePlayer p){
         timer.remove(p);
     }
 

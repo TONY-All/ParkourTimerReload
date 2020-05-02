@@ -27,7 +27,7 @@ public class YamlParkourData implements ParkourData {
      */
     public YamlParkourData(String area) {
         this.area = area;
-
+        
         fileCfg = new File(ParkourTimerReload.getInstance().getDataFolder()+File.separator+"data","data_"+area+".yml");
         if(!fileCfg.exists()){
             fileCfg.getParentFile().mkdirs();
@@ -84,6 +84,9 @@ public class YamlParkourData implements ParkourData {
     @Override
     public void setup() {
         File f = new File(ParkourTimerReload.getInstance().getDataFolder(),"data");
+        if(!f.exists()){
+            return;
+        }
         for (File file : f.listFiles()) {
             if(file.getName().contains("data_")){
                 String area = file.getName().replace("data_","");

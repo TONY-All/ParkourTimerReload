@@ -1,7 +1,16 @@
 name: ParkourTimerReload
 version: @version@
 main: cn.maxmc.parkourtimerreload.ParkourTimerReload
-api-version: 1.13
+#api-version: 1.13
 authors: [xiyanxinnian, TONY_All]
 description: ParkourTimerReload
 website: https://www.maxmc.cn
+commands:
+  parkour:
+    aliases: [pkt]
+    usage: /<command>
+permissions:
+  parkour.admin:
+    default: op
+  parkour.cancel:
+    default: true

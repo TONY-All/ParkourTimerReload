@@ -25,5 +25,6 @@ public class ParkourListener implements Listener {
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player p = event.getPlayer();
         ParkourTimerReload.getPm().resetPlayer(p);
+        ParkourTimerReload.getPm().removePlayer(p);
     }
 }

@@ -31,6 +31,6 @@ public class Timer {
         }else {
             end = 0;
         }
-        return ((double)end)/1000;
+        return ((double)(end-start))/1000;
     }
 }

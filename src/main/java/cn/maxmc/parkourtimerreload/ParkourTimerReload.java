@@ -16,8 +16,8 @@ public final class ParkourTimerReload extends JavaPlugin {
         return pm;
     }
 
-    public ParkourTimerReload(ParkourTimerReload instance) {
-        Instance = instance;
+    public ParkourTimerReload() {
+        Instance = this;
     }
 
     /**
@@ -25,9 +25,13 @@ public final class ParkourTimerReload extends JavaPlugin {
      */
     @Override
     public void onEnable() {
+        saveDefaultConfig();
         Bukkit.getLogger().info("正在加载玩家数据");
-        registerTypes();
         pm = new ParkourManager();
+        registerTypes();
+        pm.init();
+        Bukkit.getPluginManager().registerEvents(new ParkourListener(),this);
+        Bukkit.getPluginCommand("parkour").setExecutor(new ParkourCommand());
     }
 
     /**
